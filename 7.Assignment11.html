@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Calculator</title>
+    <style>
+            div {
+              margin-bottom: 10px;
+            }
+            label {
+              display: inline-block;
+              width: 110px;
+              color: #777777;
+            }
+            input {
+              padding: 5px 10px;
+            }
+          </style>
+</head>
+<body ng-app="ecommerceApp" ng-controller="ecommerceController">
+    <h1>AMAZON PRIME</h1>
+    <label>MOBILE Number</label>
+    <input type="number" name="phone" id="phone" ng-model="phone" placeholder="Enter Mobile Number"><br>
+    <label>Purchase Amount</label>
+    <input type="number" name="amount" id="amount" ng-model="amount" placeholder="Enter the amount"><br>
+    <label>Do you have card</label>
+    <input type="text" name="card" id="card" ng-model="card" placeholder="Enter the card name"><br>
+
+
+
+    <h3>Instructions</h3>		
+	<h4>Purchase Amount	Upto 10000	discount = 10 %</h4>
+	<h4>Purchase Amount	above 10000 below 20000	discount = 20 %</h4>
+	<h4>Purchase Amount	above 20000 below 30000	discount = 30 %</h4>
+	<h4>purchase Amount	Above 30000	dicount = 35 %</h4>
+	<h4>For card holder	Additional discount of 5 %	</h4>
+
+  
+    <h2 ng-bind="result()"></h2>
+    
+    <script>
+        var app=angular.module("ecommerceApp",[]);
+        app.controller("ecommerceController",function($scope){
+           
+            $scope.amount=0;
+            
+           
+           
+            $scope.result=function(){
+                output=0;
+                discount=0;
+                
+                 if(($scope.amount<=10000 && ($scope.card=="hdfc"|| $scope.card=="citi"||$scope.card=="icici"))){
+                    discount=(15 * $scope.amount)/100 ;
+                    output=$scope.amount-discount;
+                }
+                else if ((($scope.amount>=10001&& $scope.amount<=20000 ) && ($scope.card=="hdfc"|| $scope.card=="citi"||$scope.card=="icici"))) {
+                    discount=(25 * $scope.amount)/100 ;
+                    output=$scope.amount-discount;
+                    
+                }  else if ((($scope.amount>=20001&& $scope.amount<=30000 ) && ($scope.card=="hdfc"|| $scope.card=="citi"||$scope.card=="icici"))) {
+                    discount=(35 *$scope.amount)/100 ;
+                    output=$scope.amount-discount;
+                    
+                }
+                else if (( ($scope.amount>=30001 ) && ($scope.card=="hdfc"|| $scope.card=="citi"||$scope.card=="icici"))) {
+                    discount=(40 * $scope.amount)/100 ;
+                    output=$scope.amount-discount;
+                    
+                }
+
+
+                else if(($scope.amount<=10000  && ($scope.card !="hdfc"|| $scope.card !="citi"||$scope.card !="icici"))){
+                    discount=(10 * $scope.amount)/100 ;
+                    output=$scope.amount-discount;
+                    
+                }
+                else if ((($scope.amount>=10001 && $scope.amount<=20000)  && ($scope.card !="hdfc"|| $scope.card !="citi"||$scope.card !="icici"))) {
+                    discount=(20 * $scope.amount)/100 ;
+                    output=$scope.amount-discountt;
+                
+                    
+                }  else if ((($scope.amount>=20001 && $scope.amount<=30000 ) && ($scope.card !="hdfc"|| $scope.card !="citi"||$scope.card !="icici"))) {
+                    discount=(30 *$scope.amount)/100 ;
+                    output=$scope.amount-discount;
+                
+                }
+                else if (( ($scope.amount>=30001 )&& ($scope.card !="hdfc"|| $scope.card !="citi"||$scope.card !="icici"))) {
+                    discount=(35 * $scope.amount)/100 ;
+                    output=$scope.amount-discount;
+                    
+                }
+             
+                else{
+                    output='Invalid Operator';
+                }
+               
+                    
+                
+
+                               
+              
+                return output;
+                
+            };
+            
+        });
+    </script>
+</body>
+</html>

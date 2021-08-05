@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Weather API</title>
+</head>
+<body>
+    <h1>Weather Report</h1>
+    <input type="text" name="location" id="location" placeholder="Enter location">
+    <button onclick="getWeather()">Submit</button>
+    <div id="result"></div>
+    <script>
+ 
+function getWeather(){
+        let location=document.getElementById("location").value;
+        let key='384db1ce93218e20fd384d3016372238';
+        console.log('location ',location);
+ 
+      //  https://api.openweathermap.org/data/2.5/weather?q=bengaluru&appid=&units=metric
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${key}&units=metric`;
+        console.log('url ',url);
+        fetch(url)
+        .then(response=>response.json())
+        //.then(json=>console.log(json))
+        .then(json=>displayWeather(json))
+    }
+    function displayWeather(weatherinfo){
+ 
+ name = weatherinfo.name;
+ console.log('name ',name);
+ lon=weatherinfo.coord.lon;
+ lat=weatherinfo.coord.lat;
+ temp=weatherinfo.main.temp;
+ var data ="<ul>";
+ data = data + "<li>Name :"+ name +"</li>"+ "<li>Lon :"+ lon +"</li>";
+ data = data +"</ul>";
+ document.getElementById("result").innerHTML=data;
+}
+</script>
+</body>
+</html>
