@@ -58,8 +58,7 @@ result td, result th {
     <input type="text"  id="company"><br><br><br>
     <button id="add" onclick="addTodos()">Add Todos</button><br><br>
     <button id="update" onclick="UpdateData()" disabled>Update Todos</button><br><br><br>
-    <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
+    
 
     </div>
     <div>
@@ -81,7 +80,7 @@ result td, result th {
             todos=data;           
             var dispdata=`<tr><th>Id</th><th>NAME</th><th>EMAIL</th><th>CITY</th><th>MOBILE NUMBER</th><th>COMPANY</th><th>UPDATE</th><th>DELETE</TH></tr>`;
             for (let i=0;i<todos.length;i++){
-                dispdata= dispdata +`<tr><td>${todos[i].id}</td><td>${todos[i].name}</td><td>${todos[i].email}</td><td>${todos[i].city}</td><td>${todos[i].phone}</td><td>${todos[i].company}</td><td><button id=${todos[i].id} onclick="updateTodos(${todos[i].id})">Update</button></td><td><button id=${todos[i].id} onclick="deleteTodos(${todos[i].id})">Delete</button></tr>`;
+                dispdata= dispdata +`<tr><td>${todos[i].id}</td><td>${todos[i].name}</td><td>${todos[i].email}</td><td>${todos[i].address.city}</td><td>${todos[i].phone}</td><td>${todos[i].company.name}</td><td><button id=${todos[i].id} onclick="updateTodos(${todos[i].id})">Update</button></td><td><button id=${todos[i].id} onclick="deleteTodos(${todos[i].id})">Delete</button></tr>`;
             }
             document.getElementById('result').innerHTML=dispdata;
         }
@@ -134,12 +133,16 @@ result td, result th {
                 headers: { "Content-Type": "application/json; charset=utf-8" },
                 method: 'POST',
                 body: JSON.stringify({
-                    id: id,
+                     id: id,
                     name: name,
                     email:email,
+                    address:{
                     city:city,
+                },
                     phone:phone,
-                    company:company
+                    company:{
+                        name:company,
+                    }
                 })
             }            
             )
@@ -168,11 +171,13 @@ result td, result th {
                 method: 'PUT',
                 body: JSON.stringify({
                     id: id,
-                    name: name,
+                    
+                          name: name,
                     email:email,
                     city:city,
                     phone:phone,
                     company:company
+                    
                 })
             }            
             )
@@ -186,11 +191,15 @@ result td, result th {
                     {
                         updatedtodos={
                             id: id,
-                    name: name,
+                            name: name,
                     email:email,
+                    address:{
                     city:city,
+                },
                     phone:phone,
-                    company:company
+                    company:{
+                        name:company,
+                    }
                         };
                         console.log('updated todos :: ',updatedtodos);
                         todos[i]=updatedtodos;

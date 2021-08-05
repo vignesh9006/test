@@ -5,21 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+            div {
+             margin-bottom: 10px;
+           }
+           label {
+             display: inline-block;
+             width: 110px;
+             color: #777777;
+           }
+           input {
+             padding: 5px 10px;
+           }
+       h1 {
+                 background-color: skyblue;
+                 color: black;
+                 text-align: center;
+               }
+       </style>
+       
 </head>
 
 <body>
     <h1>Indian Premier League</h1>
     <lable>ENTER THE PLAYER NAME:</lable>
     <input type='text' id='PlayerName' placeholder="Enter the Player Name"><br>
-    <lable>ENTER THE Nation:</lable>
+    <lable>ENTER THE NATION:</lable>
     <input type='text' id='Nation' placeholder="Enter the Nation"><br>
     <lable>ENTER THE TEAM:</lable>
     <input type='text' id='Team' placeholder="Enter the Team"><br>
-    <lable>ENTER THE RunScored:</lable>
+    <lable>ENTER THE RUNS SCORED:</lable>
     <input type='text' id='Run' placeholder="Enter the RunScored"><br>
     <lable>ENTER THE WICKETS TAKEN:</lable>
     <input type='text' id='Wicket' placeholder="Enter the Number of Wickets Taken"><br>
-    <button onclick="save()">save</button>
+    <button onclick="save()">save</button><BR>
+        <form action="Leaderboard.html" method="post">
+                <button onclick="leadingplayer()"> Leader </button>
+</form>
     
     <table id="result">
         </table>

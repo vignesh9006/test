@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+        div {
+         margin-bottom: 10px;
+       }
+       label {
+         display: inline-block;
+         width: 110px;
+         color: #777777;
+       }
+       input {
+         padding: 5px 10px;
+       }
+   h1 {
+             background-color: skyblue;
+             color: black;
+             text-align: center;
+           }
+   </style>
+   
+
+</head>
+<body>
+<h1 id="Calc">Calculator</h1>
+<div>
+<label>Input 1</label>
+<input id="Input1" type="number"/>
+</div>
+<div>
+<label>Operator</label>
+<input id="OPERATION" type="text"/>
+</div>
+<div>
+<label>Input 2</label>
+<input id="Input2" type="number"/>
+</div>
+<br>
+<div>
+<button onclick="SUBMIT()">Calculate</button>
+</div>
+<br>
+<div>
+<h2 id="Result">Result Of Operation is </h2>
+</div>
+<script>
+//Calculation function
+function SUBMIT(){
+num1 = document.getElementById("Input1").value;
+num2 = document.getElementById("Input2").value;
+operator = document.getElementById("OPERATION").value;
+if(operator=="+")
+{
+res = num1 + num2;
+}
+if(operator=="-")
+{
+res = num1 - num2;
+}
+if(operator=="*")
+{
+res = num1 * num2;
+}
+if(operator=="/")
+{
+res = num1 / num2;
+}
+
+document.getElementById("Result").innerHTML="Result Of Operation is "+res;
+}
+</script>
+</body>
+</html>

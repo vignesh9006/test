@@ -37,7 +37,7 @@
 	<h4>Purchase Amount	above 20000 below 30000	discount = 30 %</h4>
 	<h4>purchase Amount	Above 30000	dicount = 35 %</h4>
 	<h4>For card holder	Additional discount of 5 %	</h4>
-
+    
   
     <h2 ng-bind="result()"></h2>
     
@@ -53,9 +53,10 @@
                 output=0;
                 discount=0;
                 
-                 if(($scope.amount<=10000 && ($scope.card=="hdfc"|| $scope.card=="citi"||$scope.card=="icici"))){
+                 if((($scope.amount<=10000) && ($scope.card=="hdfc"|| $scope.card=="citi"||$scope.card=="icici"))){
                     discount=(15 * $scope.amount)/100 ;
                     output=$scope.amount-discount;
+                   
                 }
                 else if ((($scope.amount>=10001&& $scope.amount<=20000 ) && ($scope.card=="hdfc"|| $scope.card=="citi"||$scope.card=="icici"))) {
                     discount=(25 * $scope.amount)/100 ;
@@ -73,9 +74,10 @@
                 }
 
 
-                else if(($scope.amount<=10000  && ($scope.card !="hdfc"|| $scope.card !="citi"||$scope.card !="icici"))){
+                else if((($scope.amount<=10000)  && ($scope.card !="hdfc"|| $scope.card !="citi"||$scope.card !="icici"))){
                     discount=(10 * $scope.amount)/100 ;
                     output=$scope.amount-discount;
+                    
                     
                 }
                 else if ((($scope.amount>=10001 && $scope.amount<=20000)  && ($scope.card !="hdfc"|| $scope.card !="citi"||$scope.card !="icici"))) {
@@ -98,12 +100,9 @@
                     output='Invalid Operator';
                 }
                
-                    
-                
-
-                               
-              
+          
                 return output;
+               
                 
             };
             
