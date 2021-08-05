@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Calculate Bills</h1>
+    <div>
+            <h2 id="Result">Result Of Operation is </h2>
+            </div>
+    
+    <Label>Name :</Label>
+    <input type='number' id='billamount' placeholder="Enter the billamount"><br>
+    <button onclick="save()">save</button>
+   
+    <script>
+    function save(){
+     billamount1= null;
+        billamount1 = document.getElementById("billamount").value;
+if(billamount1<=100){
+    billamount1=billamount1*1;
+    document.getElementById("Result").innerHTML="Result Of Operation is "+billamount1;
+}
+else if(billamount1<=200 && billamount1>=101){
+    
+    billamount1=(billamount1-100)*2;
+    billamount1=billamount1+100;
+    document.getElementById("Result").innerHTML="Result Of Operation is "+billamount1;
+}
+else if( billamount1>=201){
+    billamount1=(billamount1-200)*3+((billamount1-100)-(billamount1-200))*2;
+    billamount1=billamount1+100;
+    document.getElementById("Result").innerHTML="Result Of Operation is "+billamount1;
+
+}
+
+    }
+</script>
+</body>
+</html>

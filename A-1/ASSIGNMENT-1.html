@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+      
+</head>
+<style>
+    div {
+      margin-bottom: 10px;
+    }
+    label {
+      display: inline-block;
+      width: 110px;
+      color: #777777;
+    }
+    input {
+      padding: 5px 10px;
+    }
+  </style>
+<body>
+        <h1 style="color:brown;text-align: center; font-size: 30px;">Corona Patient Management</h1>
+        <body style="background-color: lightblue;"></body>  <br><br>
+
+        <form action="CovidPatientList.html" method="get">
+        <Label>Name of the Patient:</Label>
+    <input type="text" id="name" name="name" maxlength="50"  autofocus><br><br>
+    <label>Sex:&nbsp;&nbsp;&nbsp;</label>
+    Male: <input type="radio" name="sex" value="m" default="m">
+    Female: <input type="radio" name="sex" value="f">
+       <br><br>
+       <Label>Location:&nbsp;&nbsp;&nbsp;&nbsp;</Label>
+       <input list="Location" name="Location" value="Bengaluru" >
+  <datalist id="Location">
+    <option value="Bengaluru" >
+    <option value="Tamil Nadu">
+    <option value="Karnataka">
+    
+  </datalist>
+  <br>
+  <br>
+  
+  
+  
+  <Label>Pincode:</Label>
+  <input type="text" id="pin" name="pin" maxlength="6"><br><br>
+  <Label>Adhar Number:</Label>
+  <input type="text" id="Adhar Number" name="Adhar Number" maxlength="10"><br><br>
+  <Label>Mobile Number:</Label>
+  <input type="text" id="Mobile Number" name="Mobile Number" maxlength="10"><br><br>
+  <Label>Attendee Name:</Label>
+  <input type="text" id="Attendee Name" name="Attendee Name" ><br><br>
+  <Label>Date And Time Request:</Label>
+  <input type="datetime-local" id="birthdaytime" name="birthdaytime"><br><br>
+  <label for="vol">SPO2 level:</label>
+  <input type="range" id="vol" name="vol" min="0" max="99"><br><br>
+  <Label>Type of Hospital:</Label>
+  <input list="Type of Hospital" name="Type of Hospital"  >
+  <datalist id="Type of Hospital">
+    <option value="Private" >
+    <option value="Public">
+    <option value="Care Center">
+            
+    
+  </datalist><br><br>
+  <input type="submit" value="Register">
+  </form>
+
+  
+
+  
+
+
+    
+</body>
+</html>

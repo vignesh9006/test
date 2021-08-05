@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Indian Premier League</h1>
+    <lable>ENTER THE PLAYER NAME:</lable>
+    <input type='text' id='PlayerName' placeholder="Enter the Player Name"><br>
+    <lable>ENTER THE Nation:</lable>
+    <input type='text' id='Nation' placeholder="Enter the Nation"><br>
+    <lable>ENTER THE TEAM:</lable>
+    <input type='text' id='Team' placeholder="Enter the Team"><br>
+    <lable>ENTER THE RunScored:</lable>
+    <input type='text' id='Run' placeholder="Enter the RunScored"><br>
+    <lable>ENTER THE WICKETS TAKEN:</lable>
+    <input type='text' id='Wicket' placeholder="Enter the Number of Wickets Taken"><br>
+    <button onclick="save()">save</button>
+    
+    <table id="result">
+        </table>
+
+
+        <script>
+
+        ipllist=[];
+ 
+ function players(PlayerName,Nation,Team,Run,Wicket){
+     this.PlayerName = PlayerName;
+     this.Nation = Nation;
+     this.Team=Team;
+     this.Run=Run;
+     this.Wicket = Wicket;
+     this.getDesignation=function(){
+         return this.PlayerName;
+     };
+     this.getSalary=function(){
+         return this.Nation;
+     }
+     this.getSalary=function(){
+         return this.Team;
+     }
+     this.getSalary=function(){
+         return this.Run;
+     }
+     this.getSalary=function(){
+         return this.Wicket;
+     }
+     
+ }
+ function displayPlayer(){
+        var data = '';    
+        for (var i=0;i<ipllist.length;i++){
+            data = data + '<tr>';
+            data=data+'<td>'+ipllist[i].PlayerName+'</td>'+'<td>'+ipllist[i].Nation+'</td>'+'<td>'+ipllist[i].Team+'</td>'+'<td>'+ipllist[i].Run+'</td>'+'<td>'+ipllist[i].Wicket+'</td>';    
+            data = data+'</tr>';
+        }
+        document.getElementById('result').innerHTML=data;
+
+        for (var i=0;i<ipllist.length;i++){
+            var largest=ipllist[0].Run;
+            var num= null;
+            for(j=0;j<ipllist.length;j++){
+                num=ipllist[j].Run;
+                if(num>largest){
+                    largest=num;
+                }
+            }
+                return largest;
+        }
+    } 
+    
+
+
+
+     function save(){
+            PlayerName = document.getElementById("PlayerName").value;
+            Nation = document.getElementById("Nation").value;
+            Team = document.getElementById("Team").value;
+            Run = document.getElementById("Run").value;
+            Wicket = document.getElementById("Wicket").value;
+
+            ipl = new players(PlayerName,Nation,Team,Run,Wicket);
+            ipllist.push(ipl);
+            console.log('ipllist ',ipllist);
+            displayPlayer();
+            
+        } 
+        
+        
+        
+        
+        </script>
+</body>
+</html>
