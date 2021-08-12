@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      data-require="bootstrap@4.0.5"
+      data-semver="4.0.5"
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+    />
+    <script
+      data-require="bootstrap@4.0.5"
+      data-semver="4.0.5"
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"
+    ></script>
+    <script
+      data-require="angularjs@1.6.2"
+      data-semver="1.6.2"
+      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"
+    ></script>
+    <!-- <link rel="stylesheet" href="style.css" />-->
+    <script src="photoappscript.js"></script>
+    <style>
+    div {
+      margin-bottom: 10px;
+    }
+    label {
+      display: inline-block;
+      width: 110px;
+      color: #777777;
+    }
+    input {
+      padding: 5px 10px;
+    }
+h1 {
+          background-color: skyblue;
+          color: black;
+          text-align: center;
+        }
+        #result td, #result th {
+border: 1px solid #ddd;
+padding: 10px;
+}
+ 
+#result tr:nth-child(even){background-color: #f2f2f2;}
+ 
+#result tr:hover {background-color: #ddd;}
+ 
+ th {
+padding-top: 12px;
+padding-bottom: 12px;
+text-align: left;
+background-color: darkblue;
+color: white;
+}
+      </style>
+  </head>
+
+  <body
+    class="container"
+    ng-app="myApp"
+    ng-controller="studentController"
+    ng-cloak
+  >
+    <h1>PHOTO APPLICATIONS</h1>
+
+    <!--Form-->
+    <form ng-submit="createphoto()">
+      <h4>Create User</h4>
+      <div class="form-group" ng-show="albumid">
+        <label class="control-label col-md-2">Album ID</label>
+        <div class="col-md-4">
+          <input
+            type="number"
+            class="form-control"
+            ng-model="photo.id"
+            placeholder="Enter the ID"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">Title</label>
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="form-control"
+            ng-model="photo.title"
+            placeholder="Enter the Title."
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">Url</label>
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="form-control"
+            ng-model="photo.url"
+            placeholder="Enter the Url"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-2">Thumbnail</label>
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="form-control"
+            ng-model="photo.thumbnailUrl"
+            placeholder="Enter the ThumbnailUrl"
+          />
+        </div>
+      </div>
+      <div class="col-md-offset-2 col-md-10">
+        <input
+          type="submit"
+          value="submit"
+          class="btn btn-success btn-sm"
+          ng-show="submit"
+        />
+        <input
+          type="button"
+          value="update"
+          ng-click="updatephoto()"
+          class="btn btn-success btn-sm"
+          ng-show="update"
+        />
+        <input
+          type="button"
+          value="cancel"
+          ng-click="cancelUpdate()"
+          class="btn btn-danger btn-sm"
+          ng-show="cancel"
+        />
+      </div>
+    </form>
+    <br />
+    <br />
+    
+    <label class="control-label col-md-2">Rowlimits:</label>
+    <input type="number" step="1" min="1" ng-model="rowlimit" />
+    <br />
+    <br />
+    <label class="control-label col-md-2">SEARCH</label>
+    <input type="text" placeholder="search" ng-model="searchText" />
+    <br />
+
+    <!--End Form-->
+
+    <!--Users List-->
+    <br />
+    <h4>Photo List</h4>
+    <table class="table table-striped">
+      <thead >
+        <tr>
+          <td>ID</td>
+          <td>Title</td>
+          <td>URL</td>
+          <td>Thumbnail</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="photo in photos| filter:searchText | limitTo:rowlimit ">
+          <td>
+            {{photo.id}}
+          </td>
+          <td>
+            {{photo.title}}
+          </td>
+          <td>
+            <img ng-src="{{photo.url}}" alt="image" height="50" width="50" />
+          </td>
+          <td>
+            <img
+              ng-src="{{photo.thumbnailUrl}}"
+              alt="thumbnail"
+              height="50"
+              width="50"
+            />
+          </td>
+          <td>
+            <button class="btn btn-success btn-sm" ng-click="editphoto(photo)">
+              Edit
+            </button>
+            <button class="btn btn-danger btn-sm" ng-click="deletephoto(photo)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
