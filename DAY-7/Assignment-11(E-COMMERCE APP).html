@@ -18,6 +18,11 @@
             input {
               padding: 5px 10px;
             }
+            h1 {
+             background-color: skyblue;
+             color: black;
+             text-align: center;
+           }
           </style>
 </head>
 <body ng-app="ecommerceApp" ng-controller="ecommerceController">
@@ -26,7 +31,7 @@
     <input type="number" name="phone" id="phone" ng-model="phone" placeholder="Enter Mobile Number"><br>
     <label>Purchase Amount</label>
     <input type="number" name="amount" id="amount" ng-model="amount" placeholder="Enter the amount"><br>
-    <label>Do you have card</label>
+    <label>Enter the Card Details</label>
     <input type="text" name="card" id="card" ng-model="card" placeholder="Enter the card name"><br>
 
 
@@ -36,7 +41,7 @@
 	<h4>Purchase Amount	above 10000 below 20000	discount = 20 %</h4>
 	<h4>Purchase Amount	above 20000 below 30000	discount = 30 %</h4>
 	<h4>purchase Amount	Above 30000	dicount = 35 %</h4>
-	<h4>For card holder	Additional discount of 5 %	</h4>
+	<h4>For card holder Of (citi,icici,hdfc)	Additional discount of 5 %	</h4>
     
   
     <h2 ng-bind="result()"></h2>
